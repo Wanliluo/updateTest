@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
     UserMapper userMapper;
 
     @Override
-    public void newUser(User user)throws SSException {
+    public void newUser(User user) throws SSException {
         Assert.isNotNull(user.getUserName(), NFException.UserNameNotNull);
         Assert.isNotNull(user.getPassword(), NFException.PasswordNotNull);
         try {
@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean delById(int id)throws SSException {
+    public boolean delById(int id) throws SSException {
         if (Assert.lessOrEqualZero(id)) {
             return false;
         }
@@ -49,7 +49,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void update(User user)throws SSException {
+    public void update(User user) throws SSException {
         try {
             userMapper.update(user);
         } catch (Exception e) {

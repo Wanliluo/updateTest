@@ -58,7 +58,7 @@ public class UserController extends AbstractController {
         }
     }
 
-    @RequestMapping(value ="/add", method = RequestMethod.GET)
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String toAdd(){
         return "add";
     }
@@ -88,7 +88,7 @@ public class UserController extends AbstractController {
         }
     }
 
-    @RequestMapping(value ="/change/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/change/{id}", method = RequestMethod.GET)
     public String toChange(@PathVariable("id")int id, RedirectAttributes redirectAttributes) {
         redirectAttributes.addAttribute("id", id);
         return "change";
@@ -97,25 +97,25 @@ public class UserController extends AbstractController {
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     public String update(User user,
                          @PathVariable("id")int id,
-                         @RequestParam(value="newUserName" )String newUserName,
-                         @RequestParam(value="newAge" )int newAge,
+                         @RequestParam(value="newUserName")String newUserName,
+                         @RequestParam(value="newAge")int newAge,
                          @RequestParam(value="newPassword")String newPassword,
                          @RequestParam(value="newPassword2")String newPassword2, Model model) throws SSException {
         try {
             if (!userService.checkUserName(user.getUserName())) {
-                model.addAttribute("message",  "用户名不存在");
+                model.addAttribute("message", "用户名不存在");
                 return "change";
             }
             if(!userService.countByNAndPw(user.getUserName(), user.getPassword())) {
-                model.addAttribute("message",  "用户名或密码错误");
+                model.addAttribute("message", "用户名或密码错误");
                 return "change";
             }
             if (Assert.isNull(newUserName)||Assert.isNull(newPassword)) {
-                model.addAttribute("message",  "新用户名和密码不能为空");
+                model.addAttribute("message", "新用户名和密码不能为空");
                 return "change";
             }
             if (!newPassword.equals(newPassword2)) {
-                model.addAttribute("message",  "新密码不一致");
+                model.addAttribute("message", "新密码不一致");
                 return "change";
             }
             user.setId(id);

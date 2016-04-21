@@ -17,7 +17,7 @@ public interface UserMapper {
      * @return user
      * @throws Exception
      **/
-    public void newUser(User user) throws Exception;
+    public void newUser(@Param("user")User user) throws Exception;
 
     /**
      *
@@ -25,14 +25,14 @@ public interface UserMapper {
      * @return
      * @throws Exception
      */
-    public boolean delById(Integer id) throws Exception;
+    public boolean delById(@Param("id")Integer id) throws Exception;
 
     /**
      * 更新用户信息
      * @param user
      * @throws Exception
      */
-    public void update(User user) throws Exception;
+    public void update(@Param("user")User user) throws Exception;
 
     /**
      * 根据id查User
@@ -40,7 +40,7 @@ public interface UserMapper {
      * @return
      * @throws Exception
      */
-    public User queryById(Integer id) throws Exception;
+    public User queryById(@Param("id")Integer id) throws Exception;
 
     /**
      * 根据userName查找用户
@@ -48,7 +48,7 @@ public interface UserMapper {
      * @return
      * @throws Exception
      */
-    public User queryByUserName( String userName) throws Exception;
+    public User queryByUserName(@Param("userName") String userName) throws Exception;
 
     /**
      * 判断用户是否存在

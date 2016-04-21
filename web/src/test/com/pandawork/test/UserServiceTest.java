@@ -17,7 +17,7 @@ public class UserServiceTest extends AbstractTestCase {
     private UserService userService;
 
     @Test
-    public void testNewUser()throws SSException {
+    public void testNewUser() throws SSException {
         User user = new User();
         user.setUserName("777");
         user.setPassword("888");
@@ -26,7 +26,7 @@ public class UserServiceTest extends AbstractTestCase {
     }
 
     @Test
-    public void testDelUserByUserName()throws SSException {
+    public void testDelUserByUserName() throws SSException {
         User user = new User();
         user.setId(77);
         userService.delById(user.getId());
@@ -34,7 +34,7 @@ public class UserServiceTest extends AbstractTestCase {
     }
 
     @Test
-    public void testUpdate()throws SSException {
+    public void testUpdate() throws SSException {
         User user = new User();
         user.setUserName("11");
         user.setPassword("666");
@@ -44,7 +44,7 @@ public class UserServiceTest extends AbstractTestCase {
     }
 
     @Test
-    public void testQueryById()throws SSException {
+    public void testQueryById() throws SSException {
         System.out.println(userService.queryById(1).getUserName());
     }
 
@@ -71,7 +71,7 @@ public class UserServiceTest extends AbstractTestCase {
             System.out.print("yyyyyyy");}*/
 
     @Test
-    public void testCountByUserNameAndPassword()throws SSException {
+    public void testCountByUserNameAndPassword() throws SSException {
         System.out.print(userService.countByNAndPw("罗万理","帅帅帅"));
     }
 

@@ -76,14 +76,14 @@ public interface UserService {
      * @return
      * @throws Exception
      */
-    public boolean countByNAndPw(String userName, String password)throws SSException ;
+    public boolean countByNAndPw(String userName, String password) throws SSException ;
 
     /**
      * 获取用户列表
      * @return
      * @throws SSException
      */
-    public List<User> listAll()throws SSException;
+    public List<User> listAll() throws SSException;
 
     /**
      * 动态查询用户
@@ -91,6 +91,6 @@ public interface UserService {
      * @return
      * @throws SSException
      */
-    public User selectUserCondition(String userName ) throws SSException ;
+    public User selectUserCondition(String userName) throws SSException ;
 
 }

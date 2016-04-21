@@ -31,11 +31,11 @@
 
     <select id="queryByUserName" resultMap="pw.User">
         SELECT * FROM t_user
-        WHERE userName like "%"#{userName}
+        WHERE userName LIKE "%"#{userName}
     </select>
 
     <select id="checkUserName" resultType="int">
-        SELECT count (2) FROM t_user
+        SELECT COUNT(2) FROM t_user
         WHERE userName=#{userName}
     </select>
 
@@ -44,7 +44,7 @@
     </select>
 
     <select id="countByNAndPw" resultType ="int">
-        SELECT count (2) FROM t_user
+        SELECT COUNT(2) FROM t_user
         WHERE userName=#{userName} AND password=#{password}
     </select>
 </mapper>
