@@ -29,7 +29,7 @@
         <td>${user.age}</td>
         <td>${user.password}</td>
         <td>
-          <a href = "${website}user/delete?id = ${user.id}">删除</a>
+          <a href = "${website}user/delete?id=${user.id}">删除</a>
           <a href = "${website}user/change/${user.id}">修改</a>
         </td>
       </tr>

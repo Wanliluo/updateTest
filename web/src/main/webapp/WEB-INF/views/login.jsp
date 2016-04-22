@@ -1,42 +1,23 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<!-- **********************************************************************************
-*Description: 登录页
-*author:      mayuan
-*date:        2015.8.25
-************************************************************************************************* -->
-<!DOCTYPE html>
+<%--
+  Created by IntelliJ IDEA.
+  User: 秦
+  Date: 2016/4/22
+  Time: 20:00
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <meta charset="utf-8">
     <title>学生管理系统--登录页</title>
-    <link rel="stylesheet" type="text/css" href='<c:url value="/css/common/common.css"></c:url>'>
-    <link rel="stylesheet" type="text/css" href='<c:url value="/css/base/reset.css"></c:url>'>
-    <script type="text/javascript" src='<c:url value="/js/site-config.js"></c:url>'></script>
-    <link rel="stylesheet" type="text/css" href='<c:url value="/css/login_invert.css"></c:url>'>
 </head>
 <body>
-<div class="header">
-    <a class="header_log">学生管理系统</a>
-</div>
-<div class="continer continer_login">
-    <h1>学生管理系统</h1>
-    <div class="login">
-        <form action="${website}login" method="post">
-        <div class="login_peo">
-            <span></span>
-            <input type="text" name="userName" value="" />
-        </div>
-        <hr/>
-        <div class="login_pass">
-            <span></span>
-             <input type="password" name="password" value=""/>
-        </div>
-            <input type="submit" class="login_icon" href="" value="login"/>
-        </form>
-    </div>
-    <div class="login_invert"></div>
-</div>
+<h1>学生管理系统</h1>
+<form action = "${website}/1/login" method="post">
+    用户名<input type="text" name="userName"><br>
+    密码<input type="password" name="password"><br>
+    <input type="submit" value="登录">
+    ${message}<br>
+</form>
 </body>
 </html>

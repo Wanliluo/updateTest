@@ -1,6 +1,7 @@
 package com.pandawork.mapper;
 
 import com.pandawork.common.entity.User;
+import com.pandawork.core.common.exception.SSException;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
 

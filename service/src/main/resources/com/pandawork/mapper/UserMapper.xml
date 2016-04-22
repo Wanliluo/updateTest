@@ -35,7 +35,7 @@
     </select>
 
     <select id="checkUserName" resultType="int">
-        SELECT COUNT(2) FROM t_user
+        SELECT COUNT(1) FROM t_user
         WHERE userName=#{userName}
     </select>
 
@@ -44,7 +44,7 @@
     </select>
 
     <select id="countByNAndPw" resultType ="int">
-        SELECT COUNT(2) FROM t_user
+        SELECT COUNT(1) FROM t_user
         WHERE userName=#{userName} AND password=#{password}
     </select>
 </mapper>

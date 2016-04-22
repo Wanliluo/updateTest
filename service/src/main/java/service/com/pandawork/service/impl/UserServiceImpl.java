@@ -96,11 +96,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean checkLogin(String userName, String password) throws SSException {
-        if (!Assert.isNotNull(userName)&&Assert.isNotNull(password)){
-            return false;
-        }
         try {
-           /* password = CommonUtil.md5(password);*/
+            password = CommonUtil.md5(password);
             return userMapper.countByNAndPw(userName,password) >= 1? true:false;
         } catch (Exception e) {
             e.printStackTrace();

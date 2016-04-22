@@ -45,11 +45,9 @@ public class UserController extends AbstractController {
     public String deleteUser(@PathVariable("userName") String userName,Model model)*/
 
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
-    public String delUser(@RequestParam("id")int id, RedirectAttributes redirectAttributes) {
+    public String delUser(@RequestParam("id")int id) {
         try {
-            if (userService.delById(id)) {
-                redirectAttributes.addFlashAttribute("message", "成功删除!");
-            }
+            userService.delById(id);
             return "redirect:/user/list";
         } catch (SSException ee) {
             LogClerk.errLog.error(ee);
