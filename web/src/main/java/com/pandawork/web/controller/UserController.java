@@ -1,5 +1,6 @@
 package com.pandawork.web.controller;
 
+import com.pandawork.common.dto.UserDto;
 import com.pandawork.common.entity.User;
 import com.pandawork.core.common.exception.SSException;
 import com.pandawork.core.common.log.LogClerk;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -41,8 +43,22 @@ public class UserController extends AbstractController {
         }
     }
 
-   /* @RequestMapping(value = "/delete/{userName}" ,method = RequestMethod.GET)
-    public String deleteUser(@PathVariable("userName") String userName,Model model)*/
+    @RequestMapping(value = "/select", method = RequestMethod.GET)
+    public String toSelect() { return "select"; }
+
+    @RequestMapping(value = "/query", method = RequestMethod.POST)
+    public String selectUser(UserDto userDto, Model model) {
+        try {
+            List<User> list = Collections.emptyList();
+            list=userService.selectUser(userDto);
+            model.addAttribute("select", list) ;
+            return "select";
+        } catch (SSException ee){
+            LogClerk.errLog.error(ee);
+            sendErrMsg(ee.getMessage());
+            return ADMIN_SYS_ERR_PAGE;
+        }
+    }
 
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
     public String delUser(@RequestParam("id")int id) {
@@ -96,6 +112,7 @@ public class UserController extends AbstractController {
     public String update(User user,
                          @PathVariable("id")int id,
                          @RequestParam(value="newUserName")String newUserName,
+                         @RequestParam(value="newSex")String newSex,
                          @RequestParam(value="newAge")int newAge,
                          @RequestParam(value="newPassword")String newPassword,
                          @RequestParam(value="newPassword2")String newPassword2, Model model) throws SSException {
@@ -118,6 +135,7 @@ public class UserController extends AbstractController {
             }
             user.setId(id);
             user.setUserName(newUserName);
+            user.setSex(newSex);
             user.setAge(newAge);
             user.setPassword(CommonUtil.md5(newPassword));
             userService.update(user);

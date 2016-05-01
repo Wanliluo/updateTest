@@ -1,5 +1,6 @@
 package com.pandawork.service.impl;
 
+import com.pandawork.common.dto.UserDto;
 import com.pandawork.common.entity.User;
 import com.pandawork.common.utils.NFException;
 import com.pandawork.core.common.exception.SSException;
@@ -8,6 +9,7 @@ import com.pandawork.core.common.util.Assert;
 import com.pandawork.core.common.util.CommonUtil;
 import com.pandawork.mapper.UserMapper;
 import com.pandawork.service.UserService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -23,8 +25,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void newUser(User user) throws SSException {
-        Assert.isNotNull(user.getUserName(), NFException.UserNameNotNull);
-        Assert.isNotNull(user.getPassword(), NFException.PasswordNotNull);
+       /* Assert.isNotNull(user.getUserName(), NFException.UserNameNotNull);
+        Assert.isNotNull(user.getPassword(), NFException.PasswordNotNull);*/
         try {
             user.setPassword(CommonUtil.md5(user.getPassword()));
             userMapper.newUser(user);
@@ -130,9 +132,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User selectUserCondition(String userName) throws SSException {
-        try {
-            return userMapper.selectUserCondition(userName);
+    public List<User> selectUser(UserDto userDto) throws SSException {
+        try{
+            return userMapper.selectUser(userDto);
         } catch (Exception e) {
             LogClerk.errLog.error(e);
             throw SSException.get(NFException.SystemException, e);

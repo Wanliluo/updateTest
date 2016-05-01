@@ -18,16 +18,16 @@
     <tr>
       <th>序号</th>
       <th>姓名</th>
+      <th>性别</th>
       <th>年龄</th>
-      <th>密码</th>
       <th>操作</th>
     </tr>
     <c:forEach items = "${userList}" var = "user" varStatus = "status" >
       <tr>
         <td>${status.index+1}</td>
         <td>${user.userName}</td>
+        <td>${user.sex}</td>
         <td>${user.age}</td>
-        <td>${user.password}</td>
         <td>
           <a href = "${website}user/delete?id=${user.id}">删除</a>
           <a href = "${website}user/change/${user.id}">修改</a>

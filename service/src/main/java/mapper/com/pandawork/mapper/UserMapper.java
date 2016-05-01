@@ -1,5 +1,6 @@
 package com.pandawork.mapper;
 
+import com.pandawork.common.dto.UserDto;
 import com.pandawork.common.entity.User;
 import com.pandawork.core.common.exception.SSException;
 import org.apache.ibatis.annotations.Param;
@@ -87,11 +88,11 @@ public interface UserMapper {
                               @Param("password") String password) throws Exception ;
 
     /**
-     * 动态查询用户
-     * @param userName
+     *
+     * @param userDto
      * @return
      * @throws Exception
      */
-    public User selectUserCondition(@Param("userName") String userName) throws Exception;
+    public List<User> selectUser(@Param("userDto")UserDto userDto) throws Exception;
 
 }

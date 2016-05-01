@@ -2,49 +2,66 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.pandawork.mapper.UserMapper">
+<mapper namespace = "com.pandawork.mapper.UserMapper">
 
-    <insert id="newUser">
-        INSERT INTO t_user(userName,age,password)
-        VALUES(#{user.userName},#{user.age},#{user.password})
+    <insert id = "newUser">
+        INSERT INTO t_user(userName,sex,age,password)
+        VALUES(#{user.userName},#{user.sex},#{user.age},#{user.password})
     </insert>
 
-    <delete id="delById">
+    <delete id = "delById">
         DELETE
         FROM t_user
-        WHERE id=#{id}
+        WHERE id = #{id}
     </delete>
 
-    <update id="update">
+    <update id = "update">
         UPDATE t_user
-        SET userName=#{user.userName},
-        password=#{user.password},
-        age=#{user.age}
-        WHERE id=#{user.id}
+        SET userName = #{user.userName},
+            sex = #{user.sex},
+            password = #{user.password},
+            age = #{user.age}
+        WHERE id = #{user.id}
     </update>
 
-    <select id="queryById" resultMap="pw.User">
+    <select id = "queryById" resultMap = "pw.User">
         SELECT *
         FROM t_user
-        WHERE id=#{id}
+        WHERE id = #{id}
     </select>
 
-    <select id="queryByUserName" resultMap="pw.User">
+    <select id = "queryByUserName" resultMap = "pw.User">
         SELECT * FROM t_user
-        WHERE userName LIKE "%"#{userName}
+        WHERE userName LIKE '%#{userName}%'
     </select>
 
-    <select id="checkUserName" resultType="int">
+    <select id = "checkUserName" resultType = "int">
         SELECT COUNT(1) FROM t_user
-        WHERE userName=#{userName}
+        WHERE userName = #{userName}
     </select>
 
-    <select id="listAll" resultMap="pw.User">
+    <select id = "listAll" resultMap = "pw.User">
         SELECT * FROM t_user
     </select>
 
-    <select id="countByNAndPw" resultType ="int">
+    <select id = "countByNAndPw" resultType = "int">
         SELECT COUNT(1) FROM t_user
-        WHERE userName=#{userName} AND password=#{password}
+        WHERE userName = #{userName} AND password = #{password}
+    </select>
+
+    <select id = "selectUser" resultMap = "pw.User">
+        SELECT *
+        FROM t_user
+        <where>
+            <if test = "userDto.userName != null and userDto.userName != ''">
+                AND t_user.userName Like concat('%',#{userDto.userName},'%')
+            </if>
+            <if test = "userDto.sex != null and userDto.sex != ''">
+                AND t_user.sex = #{userDto.sex}
+            </if>
+            <if test = "userDto.maxAge != null and userDto.maxAge != ''and userDto.minAge != null and userDto.minAge != ''">
+                AND t_user.age BETWEEN #{userDto.maxAge} AND #{userDto.minAge}
+            </if>
+        </where>
     </select>
 </mapper>

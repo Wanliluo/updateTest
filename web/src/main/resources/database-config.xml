@@ -34,7 +34,7 @@
         <property name="dataSource" ref="dataSource" />
         <!-- 实体目录 -->
 
-        <property name="typeAliasesPackage" value="com.pandawork.common.entity;com.pandawork.common.common.dto;" />
+        <property name="typeAliasesPackage" value="com.pandawork.common.entity;com.pandawork.common.dto;" />
         <property name="mapperLocations">
             <list>
                 <!--这个要配置 例如 classpath:com/pandawork/test/mapper/*Mapper.xml-->

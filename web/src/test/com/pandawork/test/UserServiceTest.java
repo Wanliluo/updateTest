@@ -14,7 +14,7 @@ import java.util.List;
 public class UserServiceTest extends AbstractTestCase {
 
     @Autowired
-    private UserService userService;
+    UserService userService;
 
     @Test
     public void testNewUser() throws SSException {
@@ -62,13 +62,15 @@ public class UserServiceTest extends AbstractTestCase {
         }
     }
 
-        /* @Test
-         public void testCheckLogin() throws SSException {
-            User user = new User();
-            user.setUserName("111");
-            user.setPassword("666");
-            if(userService.checkLogin(userName,password))
-            System.out.print("yyyyyyy");}*/
+    @Test
+    public void testCheckLogin() throws SSException {
+        User user = new User();
+        user.setUserName("111");
+        user.setPassword("666");
+        if(userService.checkLogin(userName,password)) {
+            System.out.print("yyyyyyy");
+        }
+    }
 
     @Test
     public void testCountByUserNameAndPassword() throws SSException {
@@ -81,10 +83,11 @@ public class UserServiceTest extends AbstractTestCase {
     }
 
     @Test
-    public void selectUserCondition() throws SSException {
-        User user = new User();
-        List<User> list = new ArrayList<User>();
-        list = (List<User>) userService.selectUserCondition("1");
-        System.out.print(list);
+    public void testSelectUser() throws SSException {
+        List<UserDto> list = Collections.emptyList();
+        list=userService.selectUser(userDto);
+        for(int i=0;i<list.size();i++){
+            System.out.println(list.get(i).getContent());
+        }
     }
 }

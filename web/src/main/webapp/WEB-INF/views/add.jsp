@@ -15,7 +15,12 @@
   <form method="post" action="${website}/user/new">
     用户名<input type="text" name="userName"><br>
     密码<input type="password" name="password"><br>
-    再次输入密码<input type="password" name="password2"><br>
+    确认密码<input type="password" name="password2"><br>
+    性别:<select name="sex">
+    <option value="">请选择</option>
+    <option value="男">男</option>
+    <option value="女">女</option>
+  </select><br>
     年龄 <input type="text" name="age" pattern="[0-9]{1,3}"><br>
     <input type="submit" value="注册">
     ${message}<br>

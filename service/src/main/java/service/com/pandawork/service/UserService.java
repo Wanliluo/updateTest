@@ -1,5 +1,6 @@
 package com.pandawork.service;
 
+import com.pandawork.common.dto.UserDto;
 import com.pandawork.common.entity.User;
 import com.pandawork.core.common.exception.SSException;
 import org.apache.ibatis.annotations.Param;
@@ -86,11 +87,11 @@ public interface UserService {
     public List<User> listAll() throws SSException;
 
     /**
-     * 动态查询用户
-     * @param userName
+     * 根据用户信息查找用户
+     * @param userDto
      * @return
      * @throws SSException
      */
-    public User selectUserCondition(String userName) throws SSException ;
+    public List<User> selectUser(UserDto userDto) throws SSException ;
 
 }
